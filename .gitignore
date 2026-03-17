@@ -2,3 +2,6 @@ proxy/node_modules/
 proxy/dist/
 data/
 logs/
+
+remote-*/
+TODO_*.md

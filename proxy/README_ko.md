@@ -152,18 +152,18 @@ cp .env.example .env
 
 | Claude 모델 | Codex 모델 |
 |---|---|
-| `claude-sonnet-4-20250514` | `gpt-5.2-codex` |
-| `claude-3-5-sonnet-20241022` | `gpt-5.2-codex` |
+| `claude-sonnet-4-20250514` | `gpt-5.3-codex` |
+| `claude-3-5-sonnet-20241022` | `gpt-5.3-codex` |
 | `claude-3-haiku-20240307` | `gpt-5.3-codex-spark` |
-| `claude-3-opus-20240229` | `gpt-5.3-codex-xhigh` |
-| (기본값) | `gpt-5.2-codex` |
+| `claude-3-opus-20240229` | `gpt-5.4` |
+| (기본값) | `gpt-5.3-codex` |
 
 모델 패밀리별 오버라이드:
 
 ```env
 ANTHROPIC_DEFAULT_HAIKU_MODEL=gpt-5.3-codex-spark
-ANTHROPIC_DEFAULT_SONNET_MODEL=gpt-5.2-codex
-ANTHROPIC_DEFAULT_OPUS_MODEL=gpt-5.2-codex
+ANTHROPIC_DEFAULT_SONNET_MODEL=gpt-5.3-codex
+ANTHROPIC_DEFAULT_OPUS_MODEL=gpt-5.3-codex
 ```
 
 ### 사용 가능한 Codex 모델
@@ -179,15 +179,15 @@ ANTHROPIC_DEFAULT_OPUS_MODEL=gpt-5.2-codex
 | `gpt-5.3-codex-medium` | medium | |
 | `gpt-5.3-codex-low` | low | |
 | `gpt-5.3-codex-spark` | low | 속도 최적화, >1000 tok/s |
-| `gpt-5.2-codex` | high | 프록시 기본값 |
-| `gpt-5.2-codex-xhigh` | xhigh | |
-| `gpt-5.2-codex-medium` | medium | |
-| `gpt-5.2-codex-low` | low | |
+| `gpt-5.3-codex` | high | 프록시 기본값 |
+| `gpt-5.3-codex-xhigh` | xhigh | |
+| `gpt-5.3-codex-medium` | medium | |
+| `gpt-5.3-codex-low` | low | |
 | `gpt-5.1-codex` | high | |
 | `gpt-5.1-codex-max` | xhigh | |
 | `gpt-5.1-codex-mini` | medium | |
 
-단축 별칭: `gpt-5.3` → `gpt-5.3-codex`, `gpt-5.2` → `gpt-5.2-codex`, `gpt-5.1` → `gpt-5.1-codex`
+단축 별칭: `gpt-5.3` → `gpt-5.3-codex`, `gpt-5.2` → `gpt-5.3-codex`, `gpt-5.1` → `gpt-5.1-codex`
 
 ### Effort 제어
 

@@ -37,7 +37,7 @@
       "type": "string",
       "title": "Model",
       "description": "Model string passed to /v1/messages. Leave default unless you know what you're doing.",
-      "default": "gpt-5.2-codex",
+      "default": "gpt-5.4",
       "required": false
     }
   },

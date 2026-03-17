@@ -151,18 +151,18 @@ By default (`PASSTHROUGH_MODE=true`) the proxy forwards whatever model name Clau
 
 | Claude model | Codex model |
 |---|---|
-| `claude-sonnet-4-20250514` | `gpt-5.2-codex` |
-| `claude-3-5-sonnet-20241022` | `gpt-5.2-codex` |
+| `claude-sonnet-4-20250514` | `gpt-5.3-codex` |
+| `claude-3-5-sonnet-20241022` | `gpt-5.3-codex` |
 | `claude-3-haiku-20240307` | `gpt-5.3-codex-spark` |
-| `claude-3-opus-20240229` | `gpt-5.3-codex-xhigh` |
-| (fallback) | `gpt-5.2-codex` |
+| `claude-3-opus-20240229` | `gpt-5.4` |
+| (fallback) | `gpt-5.3-codex` |
 
 Override per family:
 
 ```env
 ANTHROPIC_DEFAULT_HAIKU_MODEL=gpt-5.3-codex-spark
-ANTHROPIC_DEFAULT_SONNET_MODEL=gpt-5.2-codex
-ANTHROPIC_DEFAULT_OPUS_MODEL=gpt-5.2-codex
+ANTHROPIC_DEFAULT_SONNET_MODEL=gpt-5.3-codex
+ANTHROPIC_DEFAULT_OPUS_MODEL=gpt-5.3-codex
 ```
 
 ### Available Codex models
@@ -178,15 +178,15 @@ ANTHROPIC_DEFAULT_OPUS_MODEL=gpt-5.2-codex
 | `gpt-5.3-codex-medium` | medium | |
 | `gpt-5.3-codex-low` | low | |
 | `gpt-5.3-codex-spark` | low | Speed-optimized, >1000 tok/s |
-| `gpt-5.2-codex` | high | Proxy default |
-| `gpt-5.2-codex-xhigh` | xhigh | |
-| `gpt-5.2-codex-medium` | medium | |
-| `gpt-5.2-codex-low` | low | |
+| `gpt-5.3-codex` | high | Proxy default |
+| `gpt-5.3-codex-xhigh` | xhigh | |
+| `gpt-5.3-codex-medium` | medium | |
+| `gpt-5.3-codex-low` | low | |
 | `gpt-5.1-codex` | high | |
 | `gpt-5.1-codex-max` | xhigh | |
 | `gpt-5.1-codex-mini` | medium | |
 
-Shorthand aliases: `gpt-5.3` → `gpt-5.3-codex`, `gpt-5.2` → `gpt-5.2-codex`, `gpt-5.1` → `gpt-5.1-codex`
+Shorthand aliases: `gpt-5.3` → `gpt-5.3-codex`, `gpt-5.2` → `gpt-5.3-codex`, `gpt-5.1` → `gpt-5.1-codex`
 
 ### Effort control
 

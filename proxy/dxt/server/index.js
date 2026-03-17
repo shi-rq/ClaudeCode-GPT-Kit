@@ -3,7 +3,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { CallToolRequestSchema, ListToolsRequestSchema } from "@modelcontextprotocol/sdk/types.js";
 
 const DEFAULT_BASE_URL = process.env.CODEX_PROXY_BASE_URL || "http://127.0.0.1:19080";
-const DEFAULT_MODEL = process.env.CODEX_PROXY_MODEL || "gpt-5.2-codex";
+const DEFAULT_MODEL = process.env.CODEX_PROXY_MODEL || "gpt-5.4";
 
 function requireString(value, name) {
   if (typeof value !== "string" || value.trim().length === 0) {

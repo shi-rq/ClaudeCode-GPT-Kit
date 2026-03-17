@@ -32,10 +32,10 @@ function getEnvModelForFamily(
 }
 
 const HARDCODED_MAPPING: Record<string, string> = {
-    "claude-sonnet-4-20250514": "gpt-5.2-codex",
-    "claude-3-5-sonnet-20241022": "gpt-5.2-codex",
+    "claude-sonnet-4-20250514": "gpt-5.3-codex",
+    "claude-3-5-sonnet-20241022": "gpt-5.3-codex",
     "claude-3-haiku-20240307": "gpt-5.3-codex-spark",
-    "claude-3-opus-20240229": "gpt-5.3-codex-xhigh",
+    "claude-3-opus-20240229": "gpt-5.4",
     "gpt-5.1": "gpt-5.1-codex",
     "gpt-5.2": "gpt-5.2-codex",
     "gpt-5.3": "gpt-5.3-codex",
@@ -79,7 +79,7 @@ function getModelFamily(model: string): "haiku" | "sonnet" | "opus" | null {
     return null;
 }
 
-export const DEFAULT_CODEX_MODEL = "gpt-5.2-codex";
+export const DEFAULT_CODEX_MODEL = "gpt-5.4";
 
 function isPassthroughModeEnabled(): boolean {
     const raw = process.env.PASSTHROUGH_MODE?.trim().toLowerCase();
