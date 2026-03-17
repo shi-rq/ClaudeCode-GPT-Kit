@@ -2,7 +2,7 @@
 
 Run `Claude Code` on `ChatGPT Plus/Pro` through a local Codex proxy.
 
-For Chinese instructions, see [README_ZH.md](README_ZH.md).
+中文版指南：[README_ZH.md](README_ZH.md)
 
 This project is packaged to be easy to hand off: enter the folder, run one setup command, and then launch `claude-gpt`.
 
