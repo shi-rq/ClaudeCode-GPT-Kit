@@ -139,3 +139,7 @@ If `data/tokens.json` is deleted or expires, log in again with:
 rm -f data/tokens.json
 CHATGPT_CODEX_PROXY_TOKEN_FILE="$PWD/data/tokens.json" npm --prefix proxy run login
 ```
+
+## Warning ⚠️
+
+This project is for personal, local use only. You are responsible for reviewing and complying with the terms, policies, and account rules of Anthropic, OpenAI, Claude Code, OpenCode, and any other services you connect. Do not commit, share, or publish tokens, logs, or account data.

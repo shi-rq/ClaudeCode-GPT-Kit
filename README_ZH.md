@@ -139,3 +139,7 @@ data/tokens.json
 rm -f data/tokens.json
 CHATGPT_CODEX_PROXY_TOKEN_FILE="$PWD/data/tokens.json" npm --prefix proxy run login
 ```
+
+## Warning ⚠️
+
+本项目仅供个人在本地环境中使用。你需要自行确认并遵守 Anthropic、OpenAI、Claude Code、OpenCode 及其他相关服务的条款、政策和账号规则。请不要提交、分享或公开任何 token、日志或账号数据。
