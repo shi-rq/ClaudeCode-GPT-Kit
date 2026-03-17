@@ -15,10 +15,10 @@
 
 ## 前置条件
 
-- 机器上已经安装并能运行 `claude`
+- 已安装 [ClaudeCode](https://code.claude.com/docs/en/overview)，并且可以正常运行
 - 已安装 `node` 和 `npm`
 - 满足以下任一条件：
-  - 你已经在 OpenCode 里登录过 OpenAI
+  - 你已经在 [OpenCode](https://opencode.ai/docs/) 里登录过 OpenAI
   - 你可以在初始化时通过浏览器完成 ChatGPT Plus/Pro 登录
 
 ## 快速开始

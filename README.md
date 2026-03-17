@@ -15,10 +15,10 @@ This project is packaged to be easy to hand off: enter the folder, run one setup
 
 ## Prerequisites
 
-- `claude` is installed and works on your machine
+- [ClaudeCode](https://code.claude.com/docs/en/overview) is installed and works on your machine
 - `node` and `npm` are installed
 - one of these is true:
-  - you already logged into OpenAI inside OpenCode
+  - you already logged into OpenAI inside [OpenCode](https://opencode.ai/docs/)
   - you can complete a browser login for ChatGPT Plus/Pro during setup
 
 ## Quick Start
