@@ -1,27 +1,29 @@
-# Claude GPT Kit
+# ClaudeCode-GPT-Kit
 
-通过本地 Codex 代理，让 `Claude Code` 使用 `ChatGPT Plus/Pro`。
+Run `Claude Code` on `ChatGPT Plus/Pro` through a local Codex proxy.
 
-这个项目已经整理成开箱即用的形式：进入目录，执行一次初始化命令，之后直接运行 `claude-gpt` 即可。
+For Chinese instructions, see [README_ZH.md](README_ZH.md).
 
-## 项目包含什么
+This project is packaged to be easy to hand off: enter the folder, run one setup command, and then launch `claude-gpt`.
 
-- `proxy/` - 基于 `chatgpt-codex-proxy` 的本地 Anthropic 兼容代理
-- `bin/claude-gpt` - 启动包装命令，会自动拉起代理并启动 Claude Code
-- `scripts/setup.sh` - 一次性初始化脚本，负责安装、构建、登录导入和命令安装
-- `scripts/import-opencode-auth.py` - 如果本机已有 OpenCode 的 OpenAI OAuth 登录态，会自动导入
+## What is included
 
-## 前置条件
+- `proxy/` - a local Anthropic-compatible proxy based on `chatgpt-codex-proxy`
+- `bin/claude-gpt` - a wrapper command that auto-starts the proxy and launches Claude Code
+- `scripts/setup.sh` - one-time setup for install, build, login/import, and command installation
+- `scripts/import-opencode-auth.py` - imports an existing OpenCode OpenAI OAuth login when available
 
-- 机器上已经安装并能运行 `claude`
-- 已安装 `node` 和 `npm`
-- 满足以下任一条件：
-  - 你已经在 OpenCode 里登录过 OpenAI
-  - 你可以在初始化时通过浏览器完成 ChatGPT Plus/Pro 登录
+## Prerequisites
 
-## 快速开始
+- `claude` is installed and works on your machine
+- `node` and `npm` are installed
+- one of these is true:
+  - you already logged into OpenAI inside OpenCode
+  - you can complete a browser login for ChatGPT Plus/Pro during setup
 
-在当前目录执行：
+## Quick Start
+
+From this folder:
 
 ```bash
 chmod +x scripts/setup.sh bin/claude-gpt scripts/import-opencode-auth.py
@@ -29,109 +31,109 @@ chmod +x scripts/setup.sh bin/claude-gpt scripts/import-opencode-auth.py
 claude-gpt
 ```
 
-完整流程就是这三步。
+That is the full setup flow.
 
-## 初始化脚本会做什么
+## What setup does
 
-`./scripts/setup.sh` 会自动完成：
+`./scripts/setup.sh` will:
 
-1. 安装代理依赖
-2. 构建代理
-3. 生成 `proxy/.env`，并把 Sonnet 默认映射到 `gpt-5.3-codex`
-4. 尝试从 `~/.local/share/opencode/auth.json` 导入 OpenAI OAuth token
-5. 如果没有可复用的 OpenCode 登录态，则自动打开浏览器进行 ChatGPT Plus/Pro 登录
-6. 安装本地命令链接，例如 `~/.local/bin/claude-gpt` 或当前 PATH 中可用的位置
+1. install proxy dependencies
+2. build the proxy
+3. create `proxy/.env` with `gpt-5.3-codex` as the default Sonnet mapping
+4. try to import an OpenAI OAuth token from `~/.local/share/opencode/auth.json`
+5. if no reusable OpenCode token exists, open a browser login flow and save the token locally
+6. install a local command symlink such as `~/.local/bin/claude-gpt` or another PATH-visible location
 
-## 日常使用
+## Daily usage
 
-初始化完成后，直接运行：
+After setup, run:
 
 ```bash
 claude-gpt
 ```
 
-这个包装命令会自动：
+The wrapper will automatically:
 
-- 在代理未启动时自动启动本地代理
-- 把 Claude Code 指向 `http://127.0.0.1:19080`
-- 复用保存在 `data/tokens.json` 里的 OpenAI OAuth 登录态
+- start the local proxy if it is not already running
+- point Claude Code to `http://127.0.0.1:19080`
+- reuse the saved OpenAI OAuth token from `data/tokens.json`
 
-## 如何确认当前用的是 GPT
+## Verify it is really using GPT
 
-运行 `claude-gpt` 后，Claude 的界面仍然可能显示 Claude 的模型名，这是正常现象。
+After launching `claude-gpt`, the Claude UI may still show Claude model names. That is expected.
 
-真正的后端调用会记录在：
+The real backend call is logged in:
 
 ```bash
 cat logs/chatgpt-codex-proxy.log
 ```
 
-看到类似下面这一行，就说明实际调用的是 GPT：
+Look for a line like:
 
 ```text
 Calling gpt-5.3-codex with effort=high
 ```
 
-## 你可能会关心的文件
+## Important files
 
-- `data/tokens.json` - 本项目实际使用的 OpenAI OAuth token
-- `logs/chatgpt-codex-proxy.log` - 本地代理日志
-- `proxy/.env` - 模型映射和代理默认配置
+- `data/tokens.json` - the OpenAI OAuth token actually used by this project
+- `logs/chatgpt-codex-proxy.log` - local proxy logs
+- `proxy/.env` - model mapping and proxy defaults
 
-## 重新登录
+## Re-login
 
-如果保存的登录态失效，可以执行：
+If the saved login stops working:
 
 ```bash
 rm -f data/tokens.json
 CHATGPT_CODEX_PROXY_TOKEN_FILE="$PWD/data/tokens.json" npm --prefix proxy run login
 ```
 
-## 修改默认模型
+## Change the default model
 
-编辑 `proxy/.env`。
+Edit `proxy/.env`.
 
-例如：
+Example:
 
 ```env
 ANTHROPIC_DEFAULT_SONNET_MODEL=gpt-5.3-codex-xhigh
 ```
 
-修改后，关闭当前 Claude 会话，再重新运行 `claude-gpt` 即可生效。
+Then close the current Claude session and run `claude-gpt` again.
 
-## 常见问题
+## Troubleshooting
 
 - `claude-gpt: command not found`
-  - 把 `~/.local/bin` 或脚本提示的安装目录加入 PATH，然后重新打开终端
-- 代理启动失败
-  - 查看 `logs/chatgpt-codex-proxy.log`
-- 初始化提示缺少登录态
-  - 重新运行 `./scripts/setup.sh`
-- Claude 界面仍然显示 Sonnet
-  - 这只是客户端界面文案，不代表实际后端；请以代理日志为准
+  - add `~/.local/bin` or the install path printed by setup to your PATH, then reopen the shell
+- proxy fails to start
+  - inspect `logs/chatgpt-codex-proxy.log`
+- setup says login is missing
+  - rerun `./scripts/setup.sh`
+- Claude UI still says Sonnet
+  - that is only the client UI label; verify the actual backend in the proxy log
 
-## OpenAI 认证保存在哪里
+## Where OpenAI auth is stored
 
-本项目实际使用的本地 OAuth token 文件是：
+This project uses a local OAuth token file at:
 
 ```bash
 data/tokens.json
 ```
 
-这个文件保存了本地代理实际使用的 OpenAI 登录信息。
+That file contains the OpenAI login actually used by the local proxy.
 
-初始化时，项目会优先尝试从 OpenCode 导入已有登录态，来源文件是：
+During setup, the project first tries to import an existing OpenCode login from:
 
 ```bash
 ~/.local/share/opencode/auth.json
 ```
 
-所以你可能会看到两处认证数据：
+So you may see auth data in two places:
 
-- `~/.local/share/opencode/auth.json` - OpenCode 自己保存的登录态
-- `data/tokens.json` - 本项目实际使用的登录态副本
+- `~/.local/share/opencode/auth.json` - OpenCode's own saved login
+- `data/tokens.json` - the token copy this project actually uses
 
-如果 `data/tokens.json` 被删除或过期，可以重新登录：
+If `data/tokens.json` is deleted or expires, log in again with:
 
 ```bash
 rm -f data/tokens.json
