@@ -112,34 +112,6 @@ Then close the current Claude session and run `claude-gpt` again.
 - Claude UI still says Sonnet
   - that is only the client UI label; verify the actual backend in the proxy log
 
-## Where OpenAI auth is stored
-
-This project uses a local OAuth token file at:
-
-```bash
-data/tokens.json
-```
-
-That file contains the OpenAI login actually used by the local proxy.
-
-During setup, the project first tries to import an existing OpenCode login from:
-
-```bash
-~/.local/share/opencode/auth.json
-```
-
-So you may see auth data in two places:
-
-- `~/.local/share/opencode/auth.json` - OpenCode's own saved login
-- `data/tokens.json` - the token copy this project actually uses
-
-If `data/tokens.json` is deleted or expires, log in again with:
-
-```bash
-rm -f data/tokens.json
-CHATGPT_CODEX_PROXY_TOKEN_FILE="$PWD/data/tokens.json" npm --prefix proxy run login
-```
-
-## Warning ⚠️
+## ⚠️ Warning
 
 This project is for personal, local use only. You are responsible for reviewing and complying with the terms, policies, and account rules of Anthropic, OpenAI, Claude Code, OpenCode, and any other services you connect. Do not commit, share, or publish tokens, logs, or account data.

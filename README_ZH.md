@@ -112,34 +112,6 @@ ANTHROPIC_DEFAULT_SONNET_MODEL=gpt-5.3-codex-xhigh
 - Claude 界面仍然显示 Sonnet
   - 这只是客户端界面文案，不代表实际后端；请以代理日志为准
 
-## OpenAI 认证保存在哪里
-
-本项目实际使用的本地 OAuth token 文件是：
-
-```bash
-data/tokens.json
-```
-
-这个文件保存了本地代理实际使用的 OpenAI 登录信息。
-
-初始化时，项目会优先尝试从 OpenCode 导入已有登录态，来源文件是：
-
-```bash
-~/.local/share/opencode/auth.json
-```
-
-所以你可能会看到两处认证数据：
-
-- `~/.local/share/opencode/auth.json` - OpenCode 自己保存的登录态
-- `data/tokens.json` - 本项目实际使用的登录态副本
-
-如果 `data/tokens.json` 被删除或过期，可以重新登录：
-
-```bash
-rm -f data/tokens.json
-CHATGPT_CODEX_PROXY_TOKEN_FILE="$PWD/data/tokens.json" npm --prefix proxy run login
-```
-
-## Warning ⚠️
+## ⚠️ Warning
 
 本项目仅供个人在本地环境中使用。你需要自行确认并遵守 Anthropic、OpenAI、Claude Code、OpenCode 及其他相关服务的条款、政策和账号规则。请不要提交、分享或公开任何 token、日志或账号数据。
